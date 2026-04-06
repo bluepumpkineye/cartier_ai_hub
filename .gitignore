@@ -1,0 +1,11 @@
+.env
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+data/faiss.index
+data/faiss_meta.json
+
+# Sentence transformers cache (auto-downloaded, no need to commit)
+~/.cache/torch/
+~/.cache/huggingface/
