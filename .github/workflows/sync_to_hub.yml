@@ -1,0 +1,21 @@
+name: Sync to Hugging Face hub
+on:
+  push:
+    branches: [main] # triggers on push to main branch
+  workflow_dispatch: # allows you to trigger manually
+
+jobs:
+  sync-to-hub:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true # enables Large File Storage if you have ML models in your repo
+          
+      - name: Push to hub
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          # Replace 'your-hf-username' and 'your-space-name' below!
+          git push https://bluepumpkineye:$HF_TOKEN@huggingface.co/spaces/https://huggingface.co/spaces/bluepumpkineye/cartier-ai-hub
